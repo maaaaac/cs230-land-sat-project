@@ -2,7 +2,7 @@ import subprocess
 import os
 import random
 from pathlib import Path
-from train.GoogleStreetView import fetch_street_view_images_for_directions
+from data.Google_streetview.example_google_streetview_images.GoogleStreetView import fetch_street_view_images_for_directions
 
 def run_yolo_predictions_on_random_images(coord_directory, weights_path, output_directory, num_images=5, confidence_threshold=0.25):
     """
