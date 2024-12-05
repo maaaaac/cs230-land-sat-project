@@ -1,0 +1,30 @@
+# YOLOv5 v6.0 head
+head: [
+    [-1, 1, Conv, [512, 1, 1]], # Layer 10
+    [-1, 1, nn.Upsample, [None, 2, "nearest"]], # Layer 11
+    [[-1, 6], 1, Concat, [1]], # Layer 12 (concat backbone P4)
+    [-1, 3, C3, [512, False]], # Layer 13
+
+    [-1, 1, Conv, [256, 1, 1]], # Layer 14
+    [-1, 1, nn.Upsample, [None, 2, "nearest"]], # Layer 15
+    [[-1, 4], 1, Concat, [1]], # Layer 16 (concat backbone P3)
+    [-1, 3, C3, [256, False]], # Layer 17 (P3/8-small)
+
+    [-1, 1, Conv, [256, 3, 2]], # Layer 18
+    [[-1, 14], 1, Concat, [1]], # Layer 19 (concat head P4)
+    [-1, 3, C3, [512, False]], # Layer 20 (P4/16-medium)
+
+    [-1, 1, Conv, [512, 3, 2]], # Layer 21
+    [[-1, 10], 1, Concat, [1]], # Layer 22 (concat head P5)
+    [-1, 3, C3, [1024, False]], # Layer 23 (P5/32-large)
+
+    [[17, 20, 23], 1, Detect, [nc, anchors]], # Layer 24 Detect (P3, P4, P5)
+
+    # Add a binary classification head
+    # Since the binary classification head is separate from the detection head, 
+    # keep the nc parameter (number of classes for detection) as it is.
+    [-1, 1, Conv, [256, 1, 1]], # Reduce channels
+    [-1, 1, nn.AdaptiveAvgPool2d, [1]], # Global average pooling
+    [-1, 1, Conv, [1, 1, 1]], # Final binary classification layer
+    [-1, 1, nn.Sigmoid, []] # Apply sigmoid for binary output
+  ]

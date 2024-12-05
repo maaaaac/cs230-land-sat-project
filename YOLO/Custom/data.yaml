@@ -1,0 +1,10 @@
+# Define the dataset structure
+train: /home/ubuntu/cs230/data/custom_google_data/CustomMassDOTDatasetSorted/train  # Path to training images
+val: /home/ubuntu/cs230/data/custom_google_data/CustomMassDOTDatasetSorted/valid   # Path to validation images
+test: /home/ubuntu/cs230/data/custom_google_data/CustomMassDOTDatasetSorted/test   # Path to test images (optional)
+
+# Number of classes
+nc: 2  # Number of classes (e.g., 'manhole' and 'null')
+
+# Class names
+names: ['null', 'manhole']
