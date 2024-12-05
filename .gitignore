@@ -10,22 +10,7 @@ segment/
 *.pt
 
 # Ignore specific files
-CITATION.cff
-classify
-CONTRIBUTING.md
 LICENSE
-README.md
-README.zh-CN.md
-detect.py
-export.py
-requirements.txt
-train.py
-val.py
-tutorial.ipynb
-pyproject.toml
-utils/
 __pycache__/
-benchmarks.py
-manhole_inference.py
-hubconf.py
+.DS_Store
 
