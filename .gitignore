@@ -1,11 +1,3 @@
-# Ignore specific directories
-models/
-org_data/
-custom_google_data_v1/
-data/
-runs/
-segment/
-
 # Ignore all .pt files
 *.pt
 
